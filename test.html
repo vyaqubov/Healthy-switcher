@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu-btn{
+            height: 16px;
+            width: 100px;
+            background-color: black;
+            position: relative;
+            transition: all .4s;
+        }
+        .menu-btn::after{
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 100px;
+            background-color: black;
+            top: 28px;
+            transition: .8s;
+        }
+        .menu-btn::before{
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 100px;
+            background-color: black;
+            bottom: 28px;
+            transition: .8s;
+        }
+        .container{
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .container.active .menu-btn::after{
+            transform: rotateZ(45deg) translate(-20px, -20px);
+        }
+        .container.active .menu-btn::before{
+            transform: rotateZ(-45deg) translate(-20px, 20px);
+        }
+        .container.active .menu-btn{
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu" class="container">
+        <div class="menu-btn"></div>
+    </div>
+    <script>
+        const menu = document.getElementById('menu');
+
+        menu.addEventListener('click', ()=>{
+            menu.classList.toggle('active')
+        })
+    </script>
+</body>
+</html>
